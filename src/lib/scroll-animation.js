@@ -73,4 +73,14 @@ export const scrollAnimation = (position, target, onUpdate) => {
       immediateRender: false,
     },
   });
+  tl.to('.display-section', {
+    opacity: 1,
+    scrollTrigger: {
+      trigger: '.display-section',
+      start: 'top bottom', //Top of sound section meets the bottom of viewport
+      end: 'top top', //Top of section meets top of viewport
+      scrub: 2, //This is a transition property (the 2 is a delay) we can also set it to true
+      immediateRender: false,
+    },
+  });
 };
