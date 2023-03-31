@@ -6,7 +6,11 @@ import SoundSection from './components/SoundSection';
 import DisplaySection from './components/DisplaySection';
 import WebgiViewer from './components/WebgiViewer';
 
+import Loader from './components/Loader';
+
 function App() {
+  const contentRef = useRef();
+
   const webgiViewerRef = useRef();
 
   const handlePreview = () => {
@@ -15,11 +19,14 @@ function App() {
 
   return (
     <div className="App">
-      <Nav />
-      <Jumbotron />
-      <SoundSection />
-      <DisplaySection triggerPreview={handlePreview} />
-      <WebgiViewer ref={webgiViewerRef} />
+      <Loader />
+      <div ref={contentRef} id="content">
+        <Nav />
+        <Jumbotron />
+        <SoundSection />
+        <DisplaySection triggerPreview={handlePreview} />
+      </div>
+      <WebgiViewer contentRef={contentRef} ref={webgiViewerRef} />
     </div>
   );
 }
